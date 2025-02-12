@@ -14,7 +14,7 @@ class FlaggedOrdersDashboard:
             st.session_state.flagged_orders = None
         if 'flagged_fields_count' not in st.session_state:
             st.session_state.flagged_fields_count = None
-        self.dynamodb = boto3.resource('dynamodb')
+        self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1') 
         self.table_name = "afx-kg-hist-transactions"
         self.table = self.dynamodb.Table(self.table_name)
         self.run()
